@@ -1,17 +1,37 @@
-function registrar(){
+let lista = document.getElementById("lista");
 
-let tipo = document.getElementById("tipo").value
+let registros = JSON.parse(localStorage.getItem("registros")) || [];
 
-let hora = new Date().toLocaleTimeString()
+mostrarRegistros();
 
-let texto = tipo + " - " + hora
+function registrar() {
 
-let lista = document.getElementById("lista")
+let tipo = document.getElementById("tipo").value;
 
-let item = document.createElement("li")
+let hora = new Date().toLocaleTimeString();
 
-item.textContent = texto
+let texto = tipo + " - " + hora;
 
-lista.appendChild(item)
+registros.push(texto);
+
+localStorage.setItem("registros", JSON.stringify(registros));
+
+mostrarRegistros();
+
+}
+
+function mostrarRegistros() {
+
+lista.innerHTML = "";
+
+registros.forEach(function(item) {
+
+let li = document.createElement("li");
+
+li.textContent = item;
+
+lista.appendChild(li);
+
+});
 
 }
