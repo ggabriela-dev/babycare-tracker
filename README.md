@@ -18,3 +18,4 @@ Projeto simples para registrar atividades do bebê como mamadas, sono e troca de
 ## Objetivo do projeto
 
 Este projeto foi criado para praticar desenvolvimento web e lógica de programação.
+Atualizando deploy
