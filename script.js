@@ -24,11 +24,32 @@ function mostrarRegistros() {
 
 lista.innerHTML = "";
 
-registros.forEach(function(item) {
+registros.forEach(function(item, index) {
 
 let li = document.createElement("li");
 
 li.textContent = item;
+
+let botao = document.createElement("button");
+botao.textContent = "❌";
+
+botao.onclick = function () {
+
+registros.splice(index, 1);
+
+localStorage.setItem("registros", JSON.stringify(registros));
+
+mostrarRegistros();
+
+};
+
+li.appendChild(botao);
+
+lista.appendChild(li);
+
+});
+
+}
 
 lista.appendChild(li);
 
