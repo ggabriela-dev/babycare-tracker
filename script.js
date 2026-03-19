@@ -10,7 +10,17 @@ let tipo = document.getElementById("tipo").value;
 
 let hora = new Date().toLocaleTimeString();
 
-let texto = tipo + " - " + hora;
+let icone = "";
+
+if (tipo === "Mamou") {
+    icone = "👶";
+} else if (tipo === "Dormiu") {
+    icone = "💤";
+} else if (tipo === "Fralda") {
+    icone = "🧷";
+}
+
+let texto = icone + " " + tipo + " - " + hora;
 
 registros.push(texto);
 
@@ -31,7 +41,7 @@ let li = document.createElement("li");
 li.textContent = item;
 
 let botao = document.createElement("button");
-botao.textContent = "❌";
+botao.textContent = " ❌";
 
 botao.onclick = function () {
 
@@ -44,12 +54,6 @@ mostrarRegistros();
 };
 
 li.appendChild(botao);
-
-lista.appendChild(li);
-
-});
-
-}
 
 lista.appendChild(li);
 
