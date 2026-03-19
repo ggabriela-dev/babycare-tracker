@@ -8,8 +8,10 @@ function registrar() {
 
 let tipo = document.getElementById("tipo").value;
 
+let data = new Date().toLocaleDateString();
 let hora = new Date().toLocaleTimeString();
 
+let dataHora = data + " " + hora;
 let icone = "";
 
 if (tipo === "Mamou") {
@@ -20,8 +22,7 @@ if (tipo === "Mamou") {
     icone = "🧷";
 }
 
-let texto = icone + " " + tipo + " - " + hora;
-
+let texto = icone + " " + tipo + " - " + dataHora;
 registros.push(texto);
 
 localStorage.setItem("registros", JSON.stringify(registros));
@@ -33,6 +34,10 @@ mostrarRegistros();
 function mostrarRegistros() {
 
 lista.innerHTML = "";
+if (registros.length === 0) {
+    lista.innerHTML = "Nenhum registro ainda";
+    return;
+}
 
 registros.forEach(function(item, index) {
 
@@ -53,10 +58,20 @@ mostrarRegistros();
 
 };
 
+
 li.appendChild(botao);
 
 lista.appendChild(li);
 
 });
+
+}
+function limparRegistros() {
+
+localStorage.removeItem("registros");
+
+registros = [];
+
+mostrarRegistros();
 
 }
